@@ -1,18 +1,18 @@
-pipeline{
+pipeline {
     agent any
-    tools{
+    tools {
         maven 'Maven 3.9.5'
         jdk 'jdk11'
     }
-
-	node('built-in') {
-	
-		stage ('Initialize'){
-		    	sh '''
-		    		echo "PATH = ${PATH}"
-		    		echo "M2_HOME = ${M2_HOME}"
-		    	''' 		
-		}
+    stages {
+        stage ('Initialize') {
+            steps {
+                sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                '''
+            }
+        }
 
     	stage ('checkout code'){
     	        checkout scm
